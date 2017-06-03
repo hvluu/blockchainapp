@@ -24,14 +24,14 @@ contract IndieGameToken is owned {
 	uint8 public decimals;
 	uint256 public totalSupply;
 	
-    /* An array with all account balances */
-    mapping (address => uint256) public balanceOf;
+    	/* An array with all account balances */
+    	mapping (address => uint256) public balanceOf;
 
 	/* Events */
 	event Transfer(address indexed from, address indexed to, uint256 value);
 	
-    /* Initializes contract with initial supply tokens to the creator of the contract */
-    function IndieGameToken(
+    	/* Initializes contract with initial supply tokens to the creator of the contract */
+    	function IndieGameToken(
 		string _name,
 		string _symbol,
 		uint8 _decimals,
@@ -43,17 +43,17 @@ contract IndieGameToken is owned {
 		decimals = _decimals;
 		totalSupply = _initialSupply;
 		if(_centralMinter != 0) owner = _centralMinter;
-    }
+    	}
 
-    /* Send tokens */
-    function transfer(address _to, uint256 _value) {
+    	/* Send tokens */
+    	function transfer(address _to, uint256 _value) {
 		if (_to == 0x0) throw;
-        if (balanceOf[msg.sender] < _value) throw;           
-        if (balanceOf[_to] + _value < balanceOf[_to]) throw; 
-        balanceOf[msg.sender] -= _value;                     
-        balanceOf[_to] += _value;                            
-		Transfer(msg.sender, _to, _value);
-    }
+		if (balanceOf[msg.sender] < _value) throw;           
+		if (balanceOf[_to] + _value < balanceOf[_to]) throw; 
+		balanceOf[msg.sender] -= _value;                     
+		balanceOf[_to] += _value;                            
+			Transfer(msg.sender, _to, _value);
+   	}
 	
 	/* Generate more tokens */
 	function mintToken(address _target, uint256 _mintedAmount) onlyOwner {
