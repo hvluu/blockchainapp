@@ -36,13 +36,13 @@ contract IndieGameToken is owned {
 		string _symbol,
 		uint8 _decimals,
 		uint256 _initialSupply,
-		address _centralMinter) {
+		address _owner) {
                       
 		name = _name;
 		symbol = _symbol;
 		decimals = _decimals;
 		totalSupply = _initialSupply;
-		if(_centralMinter != 0) owner = _centralMinter;
+		if(_owner != 0) owner = _owner;
     	}
 
     	/* Send tokens */
